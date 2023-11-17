@@ -1,0 +1,309 @@
+class A {}
+
+class B extends A{}
+
+class C implements A {}
+
+
+
+interface I1{}
+
+interface I2 extends I1{}
+
+interface I3 implements I1{}
+
+
+
+class D implements I1{}
+
+class E extends I1{}
+
+
+
+interface I4 extends A{}
+
+interface I4 implements A{}
+
+
+
+class P {
+	void ml() {
+	}
+}
+
+
+class Q extends P {
+}
+
+
+interface I5 {
+	void ml();
+}
+
+
+interface I6 extends I5 {
+}
+
+
+class R implements I5 {
+}
+
+
+class S implements I5 {
+	public void ml() {
+	}
+}
+The errors are:
+
+class C implements A {}
+interface I3 implements I1{}
+class E extends I1{}
+interface I4 extends A{}
+interface I4 implements A{}
+class R implements I5 {}
+
+
+find the output of below programs    : Inheritance
+----------------------------------------------
+
+
+program 1
+----------
+
+class Example {
+	static int x = 10;
+	int y = 20;
+
+	public static void m1() {
+		System.out.println("A class m1");
+
+	}
+
+	public void m2() {
+		System.out.println("A class m2");
+
+	}
+
+	public void m3() {
+		System.out.println("A class m3");
+
+	}
+}
+
+class Sample extends Example {
+
+	static int x = 50;
+	int y = 60;
+
+	public static void m1() {
+		System.out.println("B class m1");
+	}
+
+	public void m2() {
+		System.out.println("B class m2");
+	}
+
+	public static void main(String[] args) {
+		System.out.println("x: " + x);
+		m1();
+
+		Sample sample = new Sample();
+		System.out.println("Y: " + sample.y);
+		sample.m2();
+		sample.m3();
+	}
+}
+
+output:
+x: 50
+B class m1
+Y: 60
+B class m2
+A class m3
+
+
+program 2
+----------
+
+class Example{
+	static int a=10;
+	int x= 20;
+}
+
+class Sample extends Example{
+
+	public static void main(String[] args) {
+		System.out.println(a);
+		System.out.println(Sample.a);
+
+		Sample s=new Sample();
+		System.out.println(s.x);
+	}
+}
+
+output:
+10
+10
+20
+
+program 3
+---------
+
+class Example {
+	int x = 10;
+	int y = 20;
+}
+
+class Sample extends Example {
+
+	int x = 30;
+	int y = 40;
+}
+
+class Test {
+	public static void main(String[] args) {
+		Sample sample = new Sample();
+		Example example = new Sample();
+
+		System.out.println(sample.x + "  " + sample.y);
+		System.out.println(example.x + "  " + example.y);
+
+		sample.x = 5;
+		sample.y = 6;
+
+		System.out.println(sample.x + "  " + sample.y);
+		System.out.println(example.x + "  " + example.y);
+	}
+}
+
+output:
+30  40
+10  20
+5  6
+10  20
+
+program 4
+---------
+
+class Example {
+	static int x = 10;
+	int y = 20;
+}
+
+class Sample extends Example {
+
+	static int x = 30;
+	int y = 40;
+}
+
+class Test {
+	public static void main(String[] args) {
+		Sample sample = new Sample();
+		Example example = new Sample();
+
+		System.out.println(sample.x + "  " + sample.y);
+		System.out.println(example.x + "  " + example.y);
+		System.out.println(Sample.x + "    " + Example.x);
+
+		sample.x = 5;
+		example.x = 6;
+
+		System.out.println(sample.x + "  " + sample.y);
+		System.out.println(example.x + "  " + example.y);
+		System.out.println(Sample.x + "    " + Example.x);
+	}
+}
+
+output:
+30  40
+10  20
+30    10
+5  40
+6  20
+5    6
+
+program 5
+---------
+
+class Example {
+	static int x = 10;
+	int y = 20;
+}
+
+class Sample extends Example {
+
+	static int x = 30;
+	int y = 40;
+}
+
+class Test {
+	public static void main(String[] args) {
+		Sample sample =new Sample();
+		Example example=sample;
+
+
+		System.out.println("x: "+sample.x);
+		System.out.println("x: "+example.x);
+
+
+		System.out.println("Y: "+sample.y);
+		System.out.println("Y: "+example.y);
+	}
+}
+
+output:
+x: 30
+x: 10
+Y: 40
+Y: 40
+
+program 6
+----------
+
+class Example {
+	int x = 10;
+	int y = 20;
+
+	public void m1() {
+		System.out.println(x);
+		System.out.println(y);
+	}
+}
+
+class Sample extends Example {
+
+	int x = 30;
+	int y = 40;
+
+	public void m2() {
+		System.out.println(x);
+		System.out.println(y);
+	}
+
+	public static void main(String[] args) {
+		Sample s1=new Sample();
+		Sample s2=new Sample();
+
+		s2.x=50;
+		s2.y=60;
+
+		s1.m1();
+		s1.m2();
+
+		System.out.println();
+
+		s2.m1();
+		s2.m2();
+	}
+}
+
+output:
+10
+20
+30
+40
+
+50
+60
+50
+60
