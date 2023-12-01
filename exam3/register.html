@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Complaint</title>
+</head>
+<body>
+    <h1>Register Complaint</h1>
+    <form action="/complaintServlet" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="mailId">Email:</label>
+        <input type="email" id="mailId" name="mailId" required><br>
+
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="text" id="mobileNumber" name="mobileNumber" required><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea><br>
+
+        <button type="submit">Submit Complaint</button>
+    </form>
+</body>
+</html>
